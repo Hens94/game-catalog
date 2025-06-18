@@ -4,7 +4,13 @@ Este proyecto es una aplicación web construida con [Next.js](https://nextjs.org
 
 ## ¿Cómo levantar la aplicación?
 
-Para iniciar el servidor de desarrollo, ejecuta el siguiente comando:
+Antes de iniciar el servidor de desarrollo, instala las dependencias ejecutando:
+
+```bash
+npm install
+```
+
+Luego, para iniciar el servidor de desarrollo, ejecuta el siguiente comando:
 
 ```bash
 npm run dev
