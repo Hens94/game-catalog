@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
-
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Game Catalog",
@@ -14,9 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
