@@ -41,6 +41,9 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   --grid-template-rows-layout: min-content min-content 1fr min-content;
+
+  /* Colores persnozalidos */
+  --color-light-green: #bce3c9
 }
 
 :root {
@@ -76,6 +79,9 @@
   --sidebar-accent-foreground: oklch(0.98 0.01 240.4);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  /* Colores personalizados */
+  --light-green: oklch(0.8808 0.0541 155.95);
 }
 
 .dark {
@@ -110,6 +116,8 @@
   --sidebar-accent-foreground: oklch(0.98 0.01 240.4);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+
+  
 }
 
 @layer base {
@@ -121,4 +129,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.menu-item {
+  @apply m-1.5 hover:bg-[#9DDBC9] border border-white rounded-md p-1.5
 }
