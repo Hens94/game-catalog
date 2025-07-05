@@ -132,5 +132,7 @@
 }
 
 .menu-item {
-  @apply m-1.5 hover:bg-[#9DDBC9] border border-white rounded-md p-1.5
+  @apply m-1.5 hover:bg-[#9DDBC9] border border-white rounded-md p-1.5;
 }
+
+/* si agrego una clase personalizada mas todo el estilo de la pagina se arruina, por alguna razon */

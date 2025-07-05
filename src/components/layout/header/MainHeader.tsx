@@ -3,10 +3,10 @@
 import Image from "next/image";
 import logo from "@/assets/images/logo.webp";
 import Form from 'next/form'
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { ChevronDown, Search } from "lucide-react";
 import { useState } from "react";
-
+import Link from "next/link"
 
 
 const MainHeader = () => {
@@ -19,25 +19,27 @@ const MainHeader = () => {
   }
 
   return (
-    <header className="flex flex-col items-center">
-      <div className="w-10/12 py-8 flex gap-x-4">
-        <Image
+    <header className="flex flex-col items-center z-2">
+      <div className="w-11/12 py-8 flex gap-x-4">
+        <Link href="/">
+          <Image
           src={logo}
           className="h-14 w-auto"
           alt="logo"
           width={120}
           height={54}
         />
-        <Form action={handleSubmit} className="flex items-center ml-8 w-7/12 border-2 border-light-green rounded-sm h-16">
+        </Link>
+        <Form action={handleSubmit} className="flex items-center ml-8 w-7/12 border-2 border-light-green rounded-sm h-14">
           <div className="flex items-center h-full border-light-green px-4">
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-bold m-1 min-w-[120px]">
-                {category}
-                <ChevronDown className="ml-1 stroke-gray-400"/>
+              <DropdownMenuTrigger className="flex items-center justify-between w-full text-sm font-bold  m-1 min-w-[120px] hover:cursor-pointer">
+                <span className="flex-1 text-left">{category}</span>
+                <ChevronDown className="stroke-gray-400"/>
               </DropdownMenuTrigger>
               <span className="border-l border-b-gray-400 h-8 ml-2" ></span>
               <DropdownMenuContent className="h-10 w-50 font-muted-foreground">
-                <div className="z-2 border-2 border-gray rounded-md bg-white">
+                <div className="border-2 border-gray rounded-md bg-white">
                   {/* <input 
                     type="text"
                     className="border-[#BCE3C9] border-2 rounded-sm m-2 w-34 h-8"
