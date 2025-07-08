@@ -43,7 +43,7 @@
   --grid-template-rows-layout: min-content min-content 1fr min-content;
 
   /* Colores persnozalidos */
-  --color-light-green: #bce3c9
+  --color-light-green: #bce3c9;
 }
 
 :root {
@@ -129,10 +129,6 @@
   body {
     @apply bg-background text-foreground;
   }
-}
-
-.menu-item {
-  @apply m-1.5 hover:bg-[#9DDBC9] border border-white rounded-md p-1.5;
 }
 
 /* si agrego una clase personalizada mas todo el estilo de la pagina se arruina, por alguna razon */
