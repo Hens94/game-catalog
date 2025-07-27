@@ -40,6 +40,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  --grid-template-rows-0: 0fr;
   --grid-template-rows-layout: min-content min-content 1fr min-content;
 
   /* Colores persnozalidos */

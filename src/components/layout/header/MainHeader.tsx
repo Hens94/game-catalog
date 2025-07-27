@@ -5,8 +5,8 @@ import SearchInput from "./SearchInput";
 
 const MainHeader = () => {
   return (
-    <header className="flex flex-col items-center z-2">
-      <div className="w-11/12 py-8 flex gap-x-4">
+    <header className="grid grid-cols-1 z-2">
+      <div className="w-full py-8 flex flex-col items-center md:flex-row gap-4 px-8">
         <Link href="/">
           <Image
             src={logo}

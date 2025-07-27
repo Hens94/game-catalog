@@ -49,7 +49,7 @@ const SearchInput = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex items-center ml-8 w-7/12 border-2 border-light-green rounded-sm h-14"
+        className="flex items-center w-full border-2 border-light-green rounded-sm h-14"
       >
         <FormField
           control={form.control}
@@ -92,7 +92,7 @@ const SearchInput = () => {
           control={form.control}
           name="search"
           render={({ field }) => (
-            <FormItem className="w-full">
+            <FormItem className="w-full flex items-center">
               <FormControl>
                 <div className="flex items-center h-full flex-1 relative">
                   <input

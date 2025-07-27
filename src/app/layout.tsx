@@ -26,7 +26,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
     <html lang="es">
       <body
         className={cn(
-          "grid grid-rows-layout grid-cols-1 gap-y-4 min-h-screen font-sans",
+          "grid grid-rows-layout grid-cols-1 gap-y-4 min-h-screen w-full",
           quicksand.className
         )}
       >
