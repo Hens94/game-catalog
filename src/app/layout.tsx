@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import Main from "@/components/layout/Main";
 import { Quicksand } from "next/font/google";
 import { cn } from "@/utils/twUtils";
+import ProductCarousel from "@/components/layout/main/ProductCarousel";
 
 export const metadata: Metadata = {
   title: "Game Catalog",

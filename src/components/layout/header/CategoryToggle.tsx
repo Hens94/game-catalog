@@ -7,15 +7,11 @@ import { useState } from "react";
 const CategoryToggle = () => {
   const [isToggle, setIsToggle] = useState<boolean>(false);
 
-  const toggleSvg = () => {
-    setIsToggle(!isToggle);
-  };
-
   return (
     <button
       className="h-12 border-2 border-[#3BB77E] text-md font-bold text-wrap rounded-md flex items-center p-2 justify-center gap-2 text-white 
                   bg-[#3BB77E] hover:bg-[#29A56C] transition duration-300 hover:cursor-pointer"
-      onClick={toggleSvg}
+      onClick={() => setIsToggle(!isToggle)}
     >
       <LayoutGrid className="stroke-white size-6" />
       Todas las categorias
