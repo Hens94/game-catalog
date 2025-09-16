@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@plugin '@midudev/tailwind-animations';
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -131,5 +133,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-/* si agrego una clase personalizada mas todo el estilo de la pagina se arruina, por alguna razon */

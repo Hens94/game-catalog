@@ -16,7 +16,7 @@ import { ChevronDown, Search } from "lucide-react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
-const categories = ["Todos", "PS4", "PS5", "Xbox One", "Xbox Series", "Switch"];
+const categories = ["Todos", "PS4", "PS5", "Xbox One", "Xbox Series", "Switch", "PC"];
 
 const searchSchema = z.object({
   search: z.string().min(1, { message: "El campo es requerido" }),
@@ -27,6 +27,7 @@ const searchSchema = z.object({
     "Xbox One",
     "Xbox Series",
     "Switch",
+    "PC",
   ]),
 });
 

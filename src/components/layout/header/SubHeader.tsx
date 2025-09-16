@@ -33,7 +33,7 @@ export const headerMenuItem: MenyItemType[] = [
 const SubHeader = () => {
   return (
     <header className="sticky top-0 grid grid-cols-1 z-1 bg-white">
-      <div className="w-full py-1 flex-col md:flex-row gap-4 items-center px-8 hidden md:flex">
+      <div className="w-full py-1 flex-col md:flex-row gap-4 items-center px-8 hidden md:flex mt-2 mb-3">
         <CategoryToggle />
         <section className="flex flex-col md:flex-row gap-4 md:gap-10 items-center">
           {headerMenuItem.map((item) => (
@@ -49,7 +49,7 @@ const SubHeader = () => {
         </section>
       </div>
       <SubHeaderMobile menuItems={headerMenuItem} />
-      <hr className="invisible md:visible w-full border-gray-200 mt-3" />
+      <hr className="invisible md:visible w-full border-gray-200" />
     </header>
   );
 };

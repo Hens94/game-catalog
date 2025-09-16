@@ -47,12 +47,14 @@ const ProductCarousel = () => {
             skipSnaps: true,
         }}
         className="w-full max-w-sm md:max-w-11/12 relative z-0">
+        {/* //PEDI AYUDA A LA IA YA POR ULTIMO PASA A LO SIGUIENTE Y PEDI AYUDA A HENRY
+        //RE: PERSEVERAR EL ROUND EDGE DEL BORDER RADIUS */}
       <CarouselContent>
         {productCarouselItem.map((item,index) => (
           <CarouselItem key={index}>
             <div className="relative">  
-              <Card>
-                <CardContent className="flex items-center justify-center h-90 md:h-140 p-6">
+              <Card className="rounded-2xl">
+                <CardContent className="flex items-center justify-center h-90 md:h-140 p-6 ">
                   <div className="md:hidden">
                     <Image 
                       src={item.pathMobile}
@@ -67,7 +69,7 @@ const ProductCarousel = () => {
                       src={item.path}
                       alt={item.label}
                       fill
-                      className="object-cover"
+                      className="object-cover block rounded-2xl"
                       sizes="(min-width: 767px) 100vw, 0vw"
                     />
                   </div>
