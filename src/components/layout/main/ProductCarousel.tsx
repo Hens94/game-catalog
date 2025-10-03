@@ -13,6 +13,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import { useAutoplay } from './ProductCarouselAutoplay'
 import { DotButton, useDotButton } from './ProductCarouselDotButton'
 import Image, { StaticImageData } from 'next/image'
+
 import promoSwitchMobile from "@/assets/images/promoSwitchMobile.webp";
 import promoPS5Mobile from "@/assets/images/promoPS5Mobile.webp";
 import promoSwitch from "@/assets/images/promoSwitch.webp";
@@ -20,10 +21,10 @@ import promoPS5 from "@/assets/images/promoPS5.webp";
 import promoXbox from "@/assets/images/promoXbox.webp";
 import promoXboxMobile from "@/assets/images/promoXboxMobile.webp";
 import { Play, Pause } from 'lucide-react'
+import Link from 'next/link'
 
 
 type PropType = {
-  slides: number[]
   options?: EmblaOptionsType
 }
 
@@ -35,7 +36,7 @@ type CarouselItemType = {
 
 export const productCarouselItem: CarouselItemType[] = [
   {
-    label: "Nintendo Switch 2",
+    label: "Nintendo Switch",
     pathMobile: promoSwitchMobile,
     path: promoSwitch
   },
@@ -86,16 +87,20 @@ const ProductCarousel: React.FC<PropType> = (props) => {
         <div className="embla__container">
           {productCarouselItem.map((item,index) => (
             <div className="embla__slide" key={index}>
-              <Image 
-                src={item.pathMobile}
-                alt={item.label}
-                className="embla__slide__img md:hidden"
-              />
-              <Image 
-                src={item.path}
-                alt={item.label}
-                className="embla__slide__img hidden md:block"
-              />
+              <Link href="/" className="md:hidden">
+                <Image 
+                  src={item.pathMobile}
+                  alt={item.label}
+                  className="embla__slide__img"
+                />
+              </Link>
+              <Link href="/" className='hidden md:block'>
+                <Image 
+                  src={item.path}
+                  alt={item.label}
+                  className="embla__slide__img"
+                />
+              </Link>
             </div>
           ))}
         </div>

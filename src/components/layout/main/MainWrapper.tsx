@@ -1,10 +1,13 @@
-import ProductCarousel from "./ProductCarousel";
+import SubProductCarousel from "./SubProductCarousel";
+import { EmblaOptionsType } from 'embla-carousel'
+
+const SubProductCarouselOptions: EmblaOptionsType = {}
 
 const MainWrapper = () => {
   return (
-    <>
-      <ProductCarousel />
-    </>
+    <div className="">
+      <SubProductCarousel options={SubProductCarouselOptions} />
+    </div>
   );
 };
 
