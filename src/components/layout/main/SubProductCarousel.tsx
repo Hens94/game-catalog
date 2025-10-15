@@ -65,7 +65,7 @@ const SubProductCarousel: React.FC<PropType> = (props) => {
 
   return (
     <section className="max-w-screen mx-auto px-4 py-22 md:py-8">
-      <p className="pl-8 text-3xl font-bold">Lanzamientos populares</p>
+      <p className="pl-8 text-3xl font-bold">Lanzamientos destacados</p>
       <div className="overflow-clip " ref={emblaRef}>
         <div className="flex touch-pan-y touch-pinch-zoom ">
           {subProductCarouselItem.map((item,index) => (
