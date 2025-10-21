@@ -18,7 +18,7 @@ const MainHeader = () => {
         </Link>
         <SearchInput />
       </div>
-      <hr className="w-full border-gray-200" />
+      <hr className="invisible md:visible w-full border-gray-200" />
     </header>
   );
 };

@@ -3,7 +3,6 @@
 import { cn } from "@/utils/twUtils";
 import { ChevronDown, LayoutGrid } from "lucide-react";
 import { FC, ReactNode, useState } from "react";
-import CategoryToggle from "./CategoryToggle";
 import Link from "next/link";
 import {
   Accordion,
@@ -12,14 +11,14 @@ import {
   AccordionTriggerWithoutChevron,
 } from "@/components/ui/Accordion";
 
-type MenyItemType = {
+type MenuItemType = {
   icon?: ReactNode;
   path: string;
   label: string;
 };
 
 type SubHeaderMobileProps = {
-  menuItems: MenyItemType[];
+  menuItems: MenuItemType[];
 };
 
 const SubHeaderMobile: FC<SubHeaderMobileProps> = ({ menuItems }) => {
@@ -34,7 +33,7 @@ const SubHeaderMobile: FC<SubHeaderMobileProps> = ({ menuItems }) => {
       value={isToggle ? "item-1" : ""}
     >
       <AccordionItem value="item-1" className="w-full">
-        <AccordionTriggerWithoutChevron>
+        <AccordionTriggerWithoutChevron asChild>
           <button
             className="w-full h-12 text-md font-bold text-wrap rounded-md flex items-center p-2 justify-center gap-2 text-white 
                   hover:bg-[#29A56C] transition duration-300 hover:cursor-pointer"
@@ -51,13 +50,12 @@ const SubHeaderMobile: FC<SubHeaderMobileProps> = ({ menuItems }) => {
         </AccordionTriggerWithoutChevron>
         <AccordionContent>
           <div className="grid grid-cols-1 gap-4">
-            <CategoryToggle />
             <section className="flex flex-col gap-4 items-center">
               {menuItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.path}
-                  className="text-md font-bold text-white transition duration-300 flex gap-2"
+                  className="text-md font-bold text-white flex gap-2"
                 >
                   {item.icon}
                   {item.label}
