@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import Main from "@/components/layout/Main";
 import { Quicksand } from "next/font/google";
 import { cn } from "@/utils/twUtils";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Game Catalog",
@@ -30,6 +31,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
           quicksand.className
         )}
       >
+        <Toaster />
         <Header />
         <Main>{children}</Main>
         <Footer />
