@@ -33,7 +33,7 @@ const SubHeaderMobile: FC<SubHeaderMobileProps> = ({ menuItems }) => {
       value={isToggle ? "item-1" : ""}
     >
       <AccordionItem value="item-1" className="w-full">
-        <AccordionTriggerWithoutChevron>
+        <AccordionTriggerWithoutChevron asChild>
           <button
             className="w-full h-12 text-md font-bold text-wrap rounded-md flex items-center p-2 justify-center gap-2 text-white 
                   hover:bg-[#29A56C] transition duration-300 hover:cursor-pointer"
