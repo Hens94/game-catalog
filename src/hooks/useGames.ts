@@ -12,7 +12,6 @@ const useGames = () => {
     try {
       setIsLoading(true);
       const response = await axiosClient.get<GameList>(API_ENDPOINTS.GET_GAMES);
-      console.log(response.data);
 
       if (response.status !== 200) {
         toast.error("Failed to fetch games");
