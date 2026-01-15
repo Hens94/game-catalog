@@ -19,6 +19,7 @@ const useGames = () => {
       }
 
       setGames(response.data);
+      console.log(games);
     } catch (error) {
       toast.error("Failed to fetch games", {
         description: error instanceof Error ? error.message : "Unknown error",

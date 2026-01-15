@@ -50,33 +50,33 @@ const SearchInput = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex items-center w-full border-2 border-light-green rounded-sm h-14"
+        className="flex items-center w-full border-2 border-border rounded-sm h-14 text-foreground bg-input "
       >
         <FormField
           control={form.control}
           name="category"
           defaultValue="Todos"
           render={({ field }) => (
-            <FormItem className="flex items-center h-full border-light-green px-4">
+            <FormItem className="flex items-center h-full px-4">
               <FormControl>
                 <DropdownMenu>
                   <DropdownMenuTrigger className="flex items-center justify-between outline-0 w-full text-sm font-bold  m-1 min-w-[120px] hover:cursor-pointer">
-                    <span className="flex-1 text-left text-pepito">
+                    <span className="flex-1 text-left">
                       {field.value}
                     </span>
-                    <ChevronDown className="stroke-gray-400" />
+                    <ChevronDown className="stroke-foreground" />
                   </DropdownMenuTrigger>
-                  <span className="border-l border-b-gray-400 h-8 ml-2"></span>
-                  <DropdownMenuContent className="h-10 w-50 font-muted-foreground">
-                    <div className="border-2 border-gray rounded-md bg-white">
-                      <DropdownMenuLabel className="font-bold text-primary">
+                  <span className="border-l border-foreground h-8 ml-2"></span>
+                  <DropdownMenuContent className="h-10 w-50 ">
+                    <div className="border-2 border-border rounded-md bg-popover overflow-x-hidden">
+                      <DropdownMenuLabel className="font-bold text-foreground">
                         Categorias
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
                       {categories.map((category) => (
                         <DropdownMenuItem
                           key={category}
-                          className="m-1.5 hover:bg-[#9DDBC9] border border-white rounded-md p-1.5"
+                          className="m-1.5 hover:bg-accent rounded-md p-1.5 text-foreground hover:text-accent-foreground outline-0"
                           onClick={() => field.onChange(category)}
                         >
                           {category}
@@ -99,10 +99,10 @@ const SearchInput = () => {
                   <input
                     type="text"
                     placeholder="Buscar por juegos"
-                    className="w-full h-full outline-none px-4 text-sm"
+                    className="w-full h-full outline-none px-4 text-sm text-foreground"
                     {...field}
                   />
-                  <Search className="flex justify-end mr-6 stroke-gray-400" />
+                  <Search className="flex justify-end mr-6 stroke-foreground" />
                 </div>
               </FormControl>
             </FormItem>

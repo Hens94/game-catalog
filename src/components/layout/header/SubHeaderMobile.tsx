@@ -28,34 +28,33 @@ const SubHeaderMobile: FC<SubHeaderMobileProps> = ({ menuItems }) => {
     <Accordion
       type="single"
       collapsible
-      className="w-full md:hidden flex bg-[#3BB77E]"
+      className="w-full md:hidden flex bg-popover"
       onValueChange={() => setIsToggle(!isToggle)}
       value={isToggle ? "item-1" : ""}
     >
       <AccordionItem value="item-1" className="w-full">
         <AccordionTriggerWithoutChevron asChild>
           <button
-            className="w-full h-12 text-md font-bold text-wrap rounded-md flex items-center p-2 justify-center gap-2 text-white 
-                  hover:bg-[#29A56C] transition duration-300 hover:cursor-pointer"
+            className="w-full h-12 text-md font-bold text-wrap rounded-md flex items-center p-2 justify-center gap-2 text-foreground"
           >
-            <LayoutGrid className="stroke-white size-6" />
-            Submenu
+            <LayoutGrid className="stroke-foregroundy size-6" />
+            Menu
             <ChevronDown
               className={cn("transition-all duration-500", {
-                "stroke-white size-6 rotate-180": isToggle,
-                "stroke-white size-6": !isToggle,
+                "stroke-foreground size-6 rotate-180": isToggle,
+                "stroke-foreground size-6": !isToggle,
               })}
             />
           </button>
         </AccordionTriggerWithoutChevron>
         <AccordionContent>
-          <div className="grid grid-cols-1 gap-4">
-            <section className="flex flex-col gap-4 items-center">
+          <div className="grid grid-cols-1 gap-6">
+            <section className="flex flex-col gap-4 items-center pt-4">
               {menuItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.path}
-                  className="text-md font-bold text-white flex gap-2"
+                  className="text-md font-bold text-foreground flex gap-2"
                 >
                   {item.icon}
                   {item.label}

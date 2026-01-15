@@ -125,7 +125,7 @@ const ProductCarousel: React.FC<PropType> = (props) => {
         </div>
 
         <button className="embla__play" onClick={toggleAutoplay} type="button">
-          {autoplayIsPlaying ? <Pause className='stroke-[#5cd49c]'/> : <Play className='stroke-[#5cd49c]'/>}
+          {autoplayIsPlaying ? <Pause className='stroke-accent'/> : <Play className='stroke-primary'/>}
         </button>
       </div>
     </div>
