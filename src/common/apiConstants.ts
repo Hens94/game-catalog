@@ -1,3 +1,3 @@
 export const API_ENDPOINTS = {
-  GET_GAMES: "/games",
+  GET_GAMES: "/games"
 } as const;

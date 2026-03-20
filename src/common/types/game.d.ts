@@ -24,7 +24,7 @@ export interface Result {
   suggestions_count: number;
   updated: Date;
   esrb_rating: EsrbRating;
-  platforms: Platform[];
+  platforms: Platform2[];
 }
 
 export interface EsrbRating {
@@ -33,11 +33,24 @@ export interface EsrbRating {
   name: string;
 }
 
-export interface Platform {
-  platform: EsrbRating;
+export interface Platform2 {
+  platform: Platform;
   released_at: string;
-  requirements: Requirements;
+  requirements_en?: Requirementsen | Requirementsen2 | Requirementsen3 | null | null;
+  requirements_ru?: (Requirementsen | null)[];
 }
+
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+  image?: any;
+  year_end?: any;
+  year_start?: (null | number)[];
+  games_count: number;
+  image_background: string;
+}
+
 
 export interface Requirements {
   minimum: string;

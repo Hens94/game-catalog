@@ -4,7 +4,7 @@ import { cn } from "@/utils/twUtils";
 import { ChevronDown, LayoutGrid } from "lucide-react";
 import { useState } from "react";
 
-const categories = ["PS4", "PS5", "Xbox One", "Xbox Series", "Switch", "PC"];
+const categories = ["Playstation 4", "Playstation 5", "Xbox One", "Xbox Series S/X", "Nintendo Switch", "PC"];
 
 const CategoryToggle = () => {
   const [isToggle, setIsToggle] = useState<boolean>(false);
@@ -17,7 +17,7 @@ const CategoryToggle = () => {
         onClick={() => setIsToggle(!isToggle)}
       >
         <LayoutGrid className="stroke-foreground size-6" />
-        Todas las categorias
+        Todas las plataformas
         <ChevronDown
           className={cn("transition-all duration-500", {
             "stroke-foreground size-6 rotate-180": isToggle,

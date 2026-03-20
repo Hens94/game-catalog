@@ -13,37 +13,57 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { ChevronDown, Search } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
+import useGamesByName from "@/hooks/useGamesByName";
 import z from "zod";
+import React from "react";
 
-const categories = ["Todos", "PS4", "PS5", "Xbox One", "Xbox Series", "Switch", "PC"];
+const platformsObject = [
+  {id: 0, value: "todos", label: "Todos"},
+  {id: 18, value: 'ps4', label: 'Playstation 4'},
+  {id: 187, value: 'ps5', label: 'Playstation 5'},
+  {id: 1, value: 'xbox-one', label: 'Xbox One'},
+  {id: 186, value: 'xbox-series-sx', label: 'Xbox Series S/X'},
+  {id: 7, value: 'nintendo-switch', label: 'Nintendo Switch'},
+  {id: 4, value: 'pc', label: 'PC'},
+] as const
+
+
 
 const searchSchema = z.object({
   search: z.string().min(1, { message: "El campo es requerido" }),
-  category: z.enum([
-    "Todos",
-    "PS4",
-    "PS5",
-    "Xbox One",
-    "Xbox Series",
-    "Switch",
-    "PC",
-  ]),
+  platform: z.object({
+    id: z.number(),
+    value: z.string(),
+    label: z.string(),
+  }),
 });
 
 type SearchType = z.infer<typeof searchSchema>;
 
 const SearchInput = () => {
+  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [selectedPlatform, setSelectedPlatform] = React.useState<number>(0);
+  const { gamesByName } = useGamesByName(searchTerm, selectedPlatform);
+
   const form = useForm<SearchType>({
     resolver: zodResolver(searchSchema),
     defaultValues: {
-      category: "Todos",
+      platform: platformsObject[0],
       search: "",
     },
   });
 
+  const platform = useWatch({
+    control: form.control,
+    name: "platform",
+  })
+
+  console.log(selectedPlatform);
+
   const onSubmit = (data: SearchType) => {
-    console.log(data);
+    setSearchTerm(data.search);
+    setSelectedPlatform(data.platform.id);
   };
 
   return (
@@ -54,15 +74,14 @@ const SearchInput = () => {
       >
         <FormField
           control={form.control}
-          name="category"
-          defaultValue="Todos"
+          name="platform"
           render={({ field }) => (
             <FormItem className="flex items-center h-full px-4">
               <FormControl>
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center justify-between outline-0 w-full text-sm font-bold  m-1 min-w-[120px] hover:cursor-pointer">
+                  <DropdownMenuTrigger className="flex items-center justify-between outline-0 w-full text-sm font-bold m-1 min-w-[120px] hover:cursor-pointer">
                     <span className="flex-1 text-left">
-                      {field.value}
+                      {field.value.label}
                     </span>
                     <ChevronDown className="stroke-foreground" />
                   </DropdownMenuTrigger>
@@ -73,13 +92,13 @@ const SearchInput = () => {
                         Categorias
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
-                      {categories.map((category) => (
+                      {platformsObject.map((platform) => (
                         <DropdownMenuItem
-                          key={category}
+                          key={platform.id}
                           className="m-1.5 hover:bg-accent rounded-md p-1.5 text-foreground hover:text-accent-foreground outline-0"
-                          onClick={() => field.onChange(category)}
+                          onClick={() => field.onChange(platformsObject.find(p => p.id === platform.id) || platformsObject[0])}
                         >
-                          {category}
+                          {platform.label}
                         </DropdownMenuItem>
                       ))}
                     </div>

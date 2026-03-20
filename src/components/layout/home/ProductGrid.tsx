@@ -15,14 +15,14 @@ const ProductGrid = () => {
 
   if (games?.results.length === 0) {
     return <div className="text-center text-2xl font-bold">No games found</div>;
-  }
+  } 
 
   return (
     <>
       <p className="pl-8 text-3xl font-bold">Lanzamientos populares</p>
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-y-10 md:mx-10 py-4 ml-3">
         {games?.results?.map((item) => (
-          <Link href="/" key={item.id}>
+          <Link href={`/games/${item.id}`} key={item.id}>
             <Card
               className="relative border-0 items-center justify-start w-50 md:w-62  
                         h-106 md:h-auto md:min-h-110 md:max-h-122 transition duration-300 

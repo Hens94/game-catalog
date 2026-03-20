@@ -10,8 +10,8 @@ import {
   usePrevNextButtons
 } from './ProductCarouselArrowButtons'
 import Autoplay from 'embla-carousel-autoplay'
-import { useAutoplay } from './ProductCarouselAutoplay'
-import { DotButton, useDotButton } from './ProductCarouselDotButton'
+import { useAutoplay } from '../home/ProductCarouselAutoplay'
+import { DotButton, useDotButton } from '../home/ProductCarouselDotButton'
 import Image, { StaticImageData } from 'next/image'
 
 import promoSwitchMobile from "@/assets/images/promoSwitchMobile.webp";
