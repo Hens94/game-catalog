@@ -13,9 +13,9 @@ const ProductGrid = () => {
     return <Loading />;
   }
 
-  if (games?.results.length === 0) {
+  if (games?.results?.length === 0) {
     return <div className="text-center text-2xl font-bold">No games found</div>;
-  } 
+  }
 
   return (
     <>

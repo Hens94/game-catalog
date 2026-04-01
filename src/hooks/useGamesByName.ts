@@ -9,7 +9,7 @@ const useGamesByName = (gameName: string, platform: number) => {
   const [gamesByName, setGamesByName] = useState<GameList | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const searchParams = platform === 0 ? {search: gameName} : {search: gameName, platforms: platform}
+  const searchParams = platform === 0 ? {search: gameName, platforms: "18,187,1,186,7,4"} : {search: gameName, platforms: platform}
 
   const getGamesByName = async () => {
     try {
