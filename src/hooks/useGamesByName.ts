@@ -1,15 +1,19 @@
 import { API_ENDPOINTS } from "@/common/apiConstants";
 import { GameList } from "@/common/types/game";
-import { Platform } from "@/common/types/game";
 import { axiosClient } from "@/libs/axiosClient";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-const useGamesByName = (gameName: string, platform: number) => {
+const useGamesByName = (gameName: string, platform: number, pageSize?: number) => {
   const [gamesByName, setGamesByName] = useState<GameList | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const searchParams = platform === 0 ? {search: gameName, platforms: "18,187,1,186,7,4"} : {search: gameName, platforms: platform}
+  
+
+  const searchParams = platform === 0 ? 
+    {search: gameName, platforms: "18,187,1,186,7,4", page_size: pageSize === undefined ? 10 : pageSize} : 
+    {search: gameName, platforms: platform, page_size: pageSize === undefined? 10 : pageSize};
+
 
   const getGamesByName = async () => {
     try {
