@@ -44,7 +44,7 @@ type SearchType = z.infer<typeof searchSchema>;
 const SearchInput = () => {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [selectedPlatform, setSelectedPlatform] = React.useState<number>(0);
-  const { gamesByName } = useGamesByName(searchTerm, selectedPlatform);
+  const { gamesByName, isLoading } = useGamesByName(searchTerm, selectedPlatform);
 
   const form = useForm<SearchType>({
     resolver: zodResolver(searchSchema),

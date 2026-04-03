@@ -5,9 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import useGames from "@/hooks/useGames";
 import Loading from "@/components/ui/Loading";
+import { GameList } from "@/common/types/game";
 
-const ProductGrid = () => {
-  const { games, isLoading } = useGames();
+type PropType = {
+  games: GameList | null,
+  isLoading: boolean
+}
+
+const ProductGrid: React.FC<PropType> = (props) => {
+  const {games, isLoading } = props;
 
   if (isLoading) {
     return <Loading />;

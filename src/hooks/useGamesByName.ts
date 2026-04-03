@@ -8,11 +8,13 @@ const useGamesByName = (gameName: string, platform: number, pageSize?: number) =
   const [gamesByName, setGamesByName] = useState<GameList | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  
 
-  const searchParams = platform === 0 ? 
-    {search: gameName, platforms: "18,187,1,186,7,4", page_size: pageSize === undefined ? 10 : pageSize} : 
-    {search: gameName, platforms: platform, page_size: pageSize === undefined? 10 : pageSize};
+  const searchParams = {
+    search: gameName,
+    platforms: platform === 0 ? "18,187,1,186,7,4" : platform,
+    page_size: pageSize === undefined ? 20 : pageSize
+  }
+
 
 
   const getGamesByName = async () => {

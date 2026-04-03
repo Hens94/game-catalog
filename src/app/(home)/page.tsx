@@ -1,25 +1,18 @@
 
 import ProductCarousel from '@/components/layout/home/ProductCarousel'
 import { EmblaOptionsType } from 'embla-carousel'
-import ProductGrid from '@/components/layout/home/ProductGrid';
-import SubProductCarousel from '@/components/layout/main/SubProductCarousel';
-
 
 const ProductCarouselOptions: EmblaOptionsType = { loop: true, duration: 30 }
 
-const SubProductCarouselOptions: EmblaOptionsType = {}
+const SLIDE_COUNT = 5
+const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 const HomePage = () => {
   return (
     <>
-      <ProductCarousel options={ProductCarouselOptions} />
-      <div className="items-center">
-        <SubProductCarousel options={SubProductCarouselOptions} />
-        <ProductGrid />
-      </div>
-      
+      <ProductCarousel slides={SLIDES} options={ProductCarouselOptions} />    
     </>
   );
 };
-
+ 
 export default HomePage;

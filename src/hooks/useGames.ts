@@ -4,14 +4,18 @@ import { axiosClient } from "@/libs/axiosClient";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-const useGames = () => {
+const useGames = (gameId?: string, pageSize?: number) => {
   const [games, setGames] = useState<GameList | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const searchParams = gameId === undefined ? 
+    {page_size: pageSize === undefined ? 10 : pageSize} :
+    {search: gameId, page_size: pageSize === undefined ? 10 : pageSize}
 
   const getGames = async () => {
     try {
       setIsLoading(true);
-      const response = await axiosClient.get<GameList>(API_ENDPOINTS.GET_GAMES);
+      const response = await axiosClient.get<GameList>(API_ENDPOINTS.GET_GAMES, {params: searchParams});
 
       if (response.status !== 200) {
         toast.error("Failed to fetch games");
