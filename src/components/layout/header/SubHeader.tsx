@@ -4,13 +4,13 @@ import CategoryToggle from "./CategoryToggle";
 import { ReactNode } from "react";
 import SubHeaderMobile from "./SubHeaderMobile";
 
-type MenyItemType = {
+type MenuItemType = {
   icon?: ReactNode;
   path: string;
   label: string;
 };
 
-export const headerMenuItem: MenyItemType[] = [
+export const headerMenuItem: MenuItemType[] = [
   {
     label: "Juegos",
     path: "/games",

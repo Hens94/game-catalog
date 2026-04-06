@@ -12,11 +12,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search, SquareMenu } from "lucide-react";
 import { useForm, useWatch } from "react-hook-form";
 import useGamesByName from "@/hooks/useGamesByName";
 import z from "zod";
-import React from "react";
+import React, { useState } from "react";
+import { cn } from "@/utils/twUtils";
 
 const platformsObject = [
   {id: 0, value: "todos", label: "Todos"},
@@ -40,9 +41,10 @@ const searchSchema = z.object({
 
 type SearchType = z.infer<typeof searchSchema>;
 
-const SearchInput = () => {
+const SearchInputMobile = () => {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [selectedPlatform, setSelectedPlatform] = React.useState<number>(0);
+  const [isToggle, setIsToggle] = useState<boolean>(false);
   const { gamesByName, isLoading } = useGamesByName(searchTerm, selectedPlatform);
 
   const form = useForm<SearchType>({
@@ -69,7 +71,7 @@ const SearchInput = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="hidden md:flex items-center w-full border-2 rounded-xl h-14 text-foreground bg-input "
+        className="flex md:hidden items-center w-full border-2 rounded-xl h-14 text-foreground bg-input "
       >
         <FormField
           control={form.control}
@@ -78,16 +80,13 @@ const SearchInput = () => {
             <FormItem className="flex items-center h-full px-4">
               <FormControl>
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center justify-between outline-0 w-full text-sm font-bold m-1 min-w-[120px] hover:cursor-pointer">
-                    <span className="flex-1 text-left">
-                      {field.value.label}
-                    </span>
+                  <DropdownMenuTrigger >
                     <ChevronDown className="stroke-foreground" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="h-10 w-50 ">
                     <div className="border-2 border-border rounded-md bg-popover overflow-x-hidden">
-                      <DropdownMenuLabel className="font-bold text-foreground">
-                        Categorias
+                      <DropdownMenuLabel className="font-bold text-primary">
+                        {field.value.label}
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
                       {platformsObject.map((platform) => (
@@ -119,7 +118,6 @@ const SearchInput = () => {
                     className="w-full h-full outline-none px-4 text-sm text-foreground"
                     {...field}
                   />
-                  <Search className="flex justify-end mr-6 stroke-foreground" />
                 </div>
               </FormControl>
             </FormItem>
@@ -130,4 +128,4 @@ const SearchInput = () => {
   );
 };
 
-export default SearchInput;
+export default SearchInputMobile;
