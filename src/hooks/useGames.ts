@@ -4,13 +4,13 @@ import { axiosClient } from "@/libs/axiosClient";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-const useGames = (gameId?: string, pageSize?: number) => {
+const useGames = (gameId?: string, pageSize?: number, platform?: number) => {
   const [games, setGames] = useState<GameList | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const searchParams = gameId === undefined ? 
-    {page_size: pageSize === undefined ? 10 : pageSize} :
-    {search: gameId, page_size: pageSize === undefined ? 10 : pageSize}
+    {platforms: platform === undefined ? "18,187,1,186,7" : platform, page_size: pageSize === undefined ? 12 : pageSize} :
+    {platforms: platform === undefined ? "18,187,1,186,7" : platform, search: gameId, page_size: pageSize === undefined ? 12 : pageSize}
 
   const getGames = async () => {
     try {

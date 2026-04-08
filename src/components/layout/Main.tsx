@@ -5,7 +5,7 @@ type MainProps = {
 };
 
 const Main: FC<Readonly<MainProps>> = ({ children }) => {
-  return <main className="flex-1 flex flex-col items-center">
+  return <main className="flex flex-col items-center">
     { children }
   </main>;
 };

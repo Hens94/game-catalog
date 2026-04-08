@@ -33,7 +33,7 @@ const ProductCarousel: React.FC<PropType> = (props) => {
 
 
   const { slides, options } = props
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Fade(), Autoplay({ playOnInit: false, delay: 10000 })])
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Fade(), Autoplay({ playOnInit: true, delay: 10000 })])
 
   const onNavButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
     const autoplay = emblaApi?.plugins()?.autoplay
@@ -99,7 +99,7 @@ const ProductCarousel: React.FC<PropType> = (props) => {
             <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
           </div>
             
-          <div className="embla__dots">
+          <div className="embla__dots ">
             {scrollSnaps.map((_, index) => (
               <DotButton
                 key={index}

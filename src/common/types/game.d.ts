@@ -25,6 +25,12 @@ export interface Result {
   updated: Date;
   esrb_rating: EsrbRating;
   platforms: Platform2[];
+  short_screenshots: Shortscreenshot[];
+}
+
+export interface Shortscreenshot {
+  id: number;
+  image: string;
 }
 
 export interface EsrbRating {

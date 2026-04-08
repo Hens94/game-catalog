@@ -12,7 +12,8 @@ const useGamesByName = (gameName: string, platform: number, pageSize?: number) =
   const searchParams = {
     search: gameName,
     platforms: platform === 0 ? "18,187,1,186,7" : platform,
-    page_size: pageSize === undefined ? 20 : pageSize
+    page_size: pageSize === undefined ? 20 : pageSize,
+    search_precise: false
   }
 
 
