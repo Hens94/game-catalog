@@ -1,13 +1,17 @@
+import GameInfo from "@/components/layout/games/GameInfo";
+
 type GamePageProps = {
   params: Promise<{
-    id: string;
+    id: number;
   }>;
 };
 
 const GamePage = async ({ params }: GamePageProps) => {
   const { id } = await params;
 
-  return <div>GamePage {id}</div>;
+  return (
+    <GameInfo id={id}></GameInfo>
+  )
 }; 
 
 export default GamePage;

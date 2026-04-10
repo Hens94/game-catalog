@@ -1,3 +1,57 @@
+export interface RootInterface {
+  id: number;
+  slug: string;
+  name: string;
+  name_original: string;
+  description: string;
+  metacritic: number;
+  metacritic_platforms: any[];
+  released: string;
+  tba: boolean;
+  updated: string;
+  background_image: string;
+  background_image_additional: string;
+  website: string;
+  rating: number;
+  rating_top: number;
+  added: number;
+  playtime: number;
+  screenshots_count: number;
+  movies_count: number;
+  creators_count: number;
+  achievements_count: number;
+  parent_achievements_count: number;
+  reddit_url: string;
+  reddit_name: string;
+  reddit_description: string;
+  reddit_logo: string;
+  reddit_count: number;
+  twitch_count: number;
+  youtube_count: number;
+  reviews_text_count: number;
+  ratings_count: number;
+  suggestions_count: number;
+  alternative_names: any[];
+  metacritic_url: string;
+  parents_count: number;
+  additions_count: number;
+  game_series_count: number;
+  user_game?: any;
+  reviews_count: number;
+  saturated_color: string;
+  dominant_color: string;
+  parent_platforms: Parentplatform[];
+  platforms: Platform2[];
+  stores: Store2[];
+  developers: Developer[];
+  genres: Developer[];
+  tags: Tag[];
+  publishers: Developer[];
+  esrb_rating: Platform;
+  clip?: any;
+  description_raw: string;
+}
+
 export interface GameList {
   count: number;
   next: string;
@@ -9,6 +63,7 @@ export interface Result {
   id: number;
   slug: string;
   name: string;
+  description: string;
   released: Date;
   tba: boolean;
   background_image: string;
@@ -26,6 +81,7 @@ export interface Result {
   esrb_rating: EsrbRating;
   platforms: Platform2[];
   short_screenshots: Shortscreenshot[];
+  description_raw: string;
 }
 
 export interface Shortscreenshot {
