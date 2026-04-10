@@ -14,7 +14,7 @@ import { useAutoplay } from '../home/ProductCarouselAutoplay'
 import { DotButton, useDotButton } from '../home/ProductCarouselDotButton'
 import Image from 'next/image'
 
-import { Play, Pause } from 'lucide-react'
+import { Play, Pause, Star } from 'lucide-react'
 import Link from 'next/link'
 import Loading from "@/components/ui/Loading";
 import ProductGrid from './ProductGrid'
@@ -22,17 +22,17 @@ import useGames from '@/hooks/useGames'
 
 
 type PropType = {
-  slides: number[]
   options?: EmblaOptionsType
 }
 
+const platformArray: string[] = ['PlayStation 4','PlayStation 5','Xbox One','Xbox Series S/X','Nintendo Switch']
 
 const ProductCarousel: React.FC<PropType> = (props) => {
   const { games, isLoading } = useGames();
 
 
 
-  const { slides, options } = props
+  const { options } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [Fade(), Autoplay({ playOnInit: true, delay: 10000 })])
 
   const onNavButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
@@ -59,6 +59,7 @@ const ProductCarousel: React.FC<PropType> = (props) => {
 
   const { autoplayIsPlaying, toggleAutoplay, onAutoplayButtonClick } =
     useAutoplay(emblaApi)
+  
 
   return (
     isLoading ? <Loading></Loading> :
@@ -70,23 +71,26 @@ const ProductCarousel: React.FC<PropType> = (props) => {
           <div className="embla__container">
             {games?.results?.map((item) => (
               <div className="embla__slide" key={item.id}>
-                <Link href="/" className="md:hidden">
+                <Link href={`/games/${item.id}`} className=''>
                   <Image 
                     width={500}
                     height={500}
-                    src={item.background_image}
+                    quality={100}
+                    unoptimized= {true}
+                    src={item.short_screenshots[1].image}
                     alt={item.slug}
-                    className="embla__slide__img"
+                    className="embla__slide__img brightness-70"
                   />
-                </Link>
-                <Link href="/" className='hidden md:block'>
-                  <Image 
-                    width={500}
-                    height={500}
-                    src={item.background_image}
-                    alt={item.slug}
-                    className="embla__slide__img"
-                  />
+                  <div className="absolute bottom-1/12 md:bottom-1/10 left-1/10">
+                    <h2 className="text-2xl md:text-4xl">{item.name}</h2>
+                    <div className="hidden md:flex mt-3 gap-3">
+                      {
+                        item.platforms.map(p => (
+                          platformArray.includes(p.platform.name) ? <small key={p.platform.id} className="border-1 border-foreground rounded-md p-1" >{p.platform.name}</small> : <span key={p.platform.id}></span>
+                        ))
+                      }
+                    </div>
+                  </div>
                 </Link>
               </div>
             ))}
