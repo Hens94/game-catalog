@@ -5,11 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
+            "name": "Launch Integrated Browser",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
+            "type": "editor-browser",
             "url": "http://localhost:8080",
             "webRoot": "${workspaceFolder}"
+        },
+
+        {
+            "type": "msedge",
+            "request": "launch",
+            "name": "Launch my cool app",
+            "url": "http://localhost:8000"
         }
     ]
 }

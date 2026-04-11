@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import Main from "@/components/layout/Main";
 import { Quicksand } from "next/font/google";
 import { cn } from "@/utils/twUtils";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Game Catalog",
@@ -26,10 +27,11 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
     <html lang="es">
       <body
         className={cn(
-          "grid grid-rows-layout grid-cols-1 gap-y-4 min-h-screen w-full overflow-x-hidden",
+          "grid grid-rows-layout grid-cols-1 gap-y-3 min-h-screen w-full overflow-x-hidden bg-background dark",
           quicksand.className
         )}
       >
+        <Toaster />
         <Header />
         <Main>{children}</Main>
         <Footer />
