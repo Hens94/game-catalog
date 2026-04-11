@@ -17,6 +17,7 @@ import { useForm, useWatch } from "react-hook-form";
 import useGamesByName from "@/hooks/useGamesByName";
 import z from "zod";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const platformsObject = [
   {id: 0, value: "todos", label: "Todos"},
@@ -41,10 +42,7 @@ const searchSchema = z.object({
 type SearchType = z.infer<typeof searchSchema>;
 
 const SearchInput = () => {
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [selectedPlatform, setSelectedPlatform] = React.useState<number>(0);
-  const { gamesByName, isLoading } = useGamesByName(searchTerm, selectedPlatform);
-
+  const router = useRouter();
   const form = useForm<SearchType>({
     resolver: zodResolver(searchSchema),
     defaultValues: {
@@ -58,11 +56,8 @@ const SearchInput = () => {
     name: "platform",
   })
 
-  console.log(selectedPlatform);
-
   const onSubmit = (data: SearchType) => {
-    setSearchTerm(data.search);
-    setSelectedPlatform(data.platform.id);
+    router.push(`/games?q=${data.search}&platform=${data.platform.id}`)
   };
 
   return (

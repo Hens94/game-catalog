@@ -1,5 +1,7 @@
+import GameList from "@/components/layout/games/GameList";
+
 const GamesPage = () => {
-  return <div>GamesPage</div>;
+  return <GameList />;
 };
 
 export default GamesPage;
