@@ -1,4 +1,4 @@
-export interface RootInterface {
+export interface GameInfo {
   id: number;
   slug: string;
   name: string;

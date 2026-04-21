@@ -14,7 +14,7 @@ import { useAutoplay } from '../home/ProductCarouselAutoplay'
 import { DotButton, useDotButton } from '../home/ProductCarouselDotButton'
 import Image from 'next/image'
 
-import { Play, Pause, Star } from 'lucide-react'
+import { Play, Pause } from 'lucide-react'
 import Link from 'next/link'
 import Loading from "@/components/ui/Loading";
 import ProductGrid from './ProductGrid'
@@ -57,7 +57,7 @@ const ProductCarousel: React.FC<PropType> = (props) => {
     onNextButtonClick
   } = usePrevNextButtons(emblaApi, onNavButtonClick)
 
-  const { autoplayIsPlaying, toggleAutoplay, onAutoplayButtonClick } =
+  const { autoplayIsPlaying, toggleAutoplay } =
     useAutoplay(emblaApi)
   
 

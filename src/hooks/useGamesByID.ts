@@ -1,17 +1,17 @@
 import { API_ENDPOINTS } from "@/common/apiConstants";
-import { RootInterface } from "@/common/types/game";
+import { GameInfo } from "@/common/types/game";
 import { axiosClient } from "@/libs/axiosClient";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const useGameByID = (gameId: number) => {
-  const [gameByID, setGameByID] = useState<RootInterface | null>(null);
+  const [gameByID, setGameByID] = useState<GameInfo | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getGames = async () => {
     try {
       setIsLoading(true);
-      const response = await axiosClient.get<RootInterface>(API_ENDPOINTS.GET_GAMES_BY_ID(gameId));
+      const response = await axiosClient.get<GameInfo>(API_ENDPOINTS.GET_GAMES_BY_ID(gameId));
 
       if (response.status !== 200) {
         toast.error("Failed to fetch games");
