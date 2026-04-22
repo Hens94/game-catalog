@@ -6,7 +6,7 @@ import SearchInputMobile from "./SearchInputMobile";
 
 const MainHeader = () => {
   return (
-    <header className="grid grid-cols-1 z-2">
+    <header className="grid grid-cols-1 z-2 bg-sidebar">
       <div className="w-full pt-4 flex flex-col items-center md:flex-row gap-4 px-8">
         <Link href="/">
           <Image

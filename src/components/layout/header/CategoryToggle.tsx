@@ -12,16 +12,15 @@ const CategoryToggle = () => {
   return (
     <>
       <button
-        className="h-12 text-md font-bold text-wrap rounded-md flex items-center p-2 justify-center gap-2 text-foreground 
-                    bg-primary hover:bg-accent hover:text-primary-foreground transition duration-300 hover:cursor-pointer"
+        className="h-12 text-md font-bold text-wrap rounded-md flex items-center p-2 justify-center gap-2 text-foreground bg-primary hover:bg-accent hover:text-accent-foreground transition duration-300 hover:cursor-pointer"
         onClick={() => setIsToggle(!isToggle)}
       >
-        <LayoutGrid className="stroke-foreground size-6" />
+        <LayoutGrid className="size-6" />
         Todas las plataformas
         <ChevronDown
           className={cn("transition-all duration-500", {
-            "stroke-foreground size-6 rotate-180": isToggle,
-            "stroke-foreground size-6": !isToggle,
+            "size-6 rotate-180": isToggle,
+            "size-6": !isToggle,
           })}
         />
       </button>
@@ -31,8 +30,7 @@ const CategoryToggle = () => {
       })}>
         <div className="grid grid-cols-2 gap-4 m-8 font-bold">
           {categories.map((category,index) => (
-            <button key={index} className="text-foreground border-1 border-border rounded-sm p-2 hover:border-accent hover:text-accent
-                            transition duration-300 hover:cursor-pointer">
+            <button key={index} className="text-foreground border-1 border-border rounded-sm p-2 hover:border-accent hover:text-accent transition duration-300 hover:cursor-pointer">
               {category}
             </button>
           ))}

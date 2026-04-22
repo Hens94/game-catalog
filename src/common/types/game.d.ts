@@ -42,14 +42,52 @@ export interface GameInfo {
   dominant_color: string;
   parent_platforms: Parentplatform[];
   platforms: Platform2[];
-  stores: Store2[];
+  stores: Store[]; 
   developers: Developer[];
-  genres: Developer[];
+  genres: Genre[];
   tags: Tag[];
   publishers: Developer[];
   esrb_rating: Platform;
   clip?: any;
   description_raw: string;
+}
+
+export interface ScreenshotInfo {
+  count: number
+  next: any
+  previous: any
+  results: ScreenshotResult[]
+}
+
+export interface ScreenshotResult {
+  id: number
+  image: string
+  width: number
+  height: number
+  is_deleted: boolean
+}
+
+export interface Store {
+  id: number
+  url: string
+  store: Store2
+}
+
+export interface Store2 {
+  id: number
+  name: string
+  slug: string
+  domain: string
+  games_count: number
+  image_background: string
+}
+
+export interface Genre {
+  id: number
+  name: string
+  slug: string
+  games_count: number
+  image_background: string
 }
 
 export interface GameList {
