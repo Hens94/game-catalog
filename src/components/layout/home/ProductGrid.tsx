@@ -31,7 +31,7 @@ const ProductGrid: React.FC<PropType> = (props) => {
       <h1 className="m-3 md:m-10 text-3xl font-bold">Lanzamientos destacados</h1>
       <div className="m-3 md:m-10 columns-1 gap-20 md:columns-3 xl:columns-4 md:gap-8">
         {games?.results?.map((item) => (
-          <Link href={`/games/${item.id}`} key={item.id} className="h-fit md:p-10 ">
+          <Link href={`/games/${item.id}`} key={item.id} className="h-fit md:p-10">
             <Card className="relative mx-auto pt-0 overflow-hidden transition duration-300 
                         md:hover:scale-105 md:hover:border-1 ">
                 <div className="absolute inset-0 " />

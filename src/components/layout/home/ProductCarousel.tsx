@@ -66,7 +66,7 @@ const ProductCarousel: React.FC<PropType> = (props) => {
     games?.results?.length === 0 ? <div className="text-center text-2xl font-bold">No games found</div> :
 
     <>
-      <div className="embla">
+      <div className="embla animate-blink delay-200">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container">
             {games?.results?.map((item) => (

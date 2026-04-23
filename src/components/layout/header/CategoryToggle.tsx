@@ -12,13 +12,13 @@ const CategoryToggle = () => {
   return (
     <>
       <button
-        className="h-12 text-md font-bold text-wrap rounded-md flex items-center p-2 justify-center gap-2 text-foreground bg-primary hover:bg-accent hover:text-accent-foreground transition duration-300 hover:cursor-pointer"
+        className="group h-12 text-md font-bold text-wrap rounded-md flex items-center p-2 justify-center gap-2 text-foreground bg-primary hover:bg-accent hover:text-accent-foreground transition duration-300 hover:cursor-pointer"
         onClick={() => setIsToggle(!isToggle)}
       >
-        <LayoutGrid className="size-6" />
+        <LayoutGrid className="size-6 group-hover:stroke-accent-foreground transition duration-300" />
         Todas las plataformas
         <ChevronDown
-          className={cn("transition-all duration-500", {
+          className={cn("group-hover:stroke-accent-foreground transition-all duration-300", {
             "size-6 rotate-180": isToggle,
             "size-6": !isToggle,
           })}
