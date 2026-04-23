@@ -42,7 +42,7 @@ const GameInfo = ({id} : PropType) => {
             </div>
 
             <div className="grid grid-cols-1 md:flex md:items-center gap-4">
-                <section className="flex md:w-3/4 flex-col px-6 gap-y-4 pt-35 md:pt-30 md:animate-fade-in-right md:delay-300">
+                <section className="flex md:w-3/4 flex-col px-6 gap-y-4 pt-35 md:pt-30 animate-fade-in-up md:animate-fade-in-right md:delay-300">
                     <h1 className="text-3xl text-center md:text-start md:text-8xl">{gameByID?.name}</h1>
                     <div className="flex flex-wrap gap-x-4 gap-y-6">
                         {gameByID?.platforms.map((p,index) => (
@@ -51,7 +51,9 @@ const GameInfo = ({id} : PropType) => {
                     </div>
                     <p className="hidden md:block my-10 text-md ">{gameByID?.description_raw}</p>
                     <Collapsible className="md:hidden grid gap-4 my-7">
-                        <CollapsibleTrigger className="border-2 border-border bg-card p-2"><span>Leer Descripcion</span></CollapsibleTrigger>
+                        <CollapsibleTrigger className="border-2 border-border rounded-md bg-card p-2">
+                            <span>Leer Descripcion</span>
+                        </CollapsibleTrigger>
                         <CollapsibleContent>{gameByID?.description_raw}</CollapsibleContent>
                     </Collapsible>
                     <h2>Disponible para compra en:</h2>
@@ -64,7 +66,7 @@ const GameInfo = ({id} : PropType) => {
                         ))}
                     </div>
                 </section>
-                <aside className="md:w-1/4 p-4 h-fit md:border-1 m-4 md:border-border md:bg-card/50 md:rounded-2xl md:animate-fade-in-left md:delay-300">
+                <aside className="md:w-1/4 p-4 h-fit md:border-1 m-4 md:border-border md:bg-card/50 md:rounded-2xl animate-fade-in-up md:animate-fade-in-left md:delay-300">
                     <h2 className="md:text-2xl">Generos:</h2>
                     <div className="flex flex-wrap gap-2 my-3">
                         {gameByID?.genres.map((genre, index) => (
