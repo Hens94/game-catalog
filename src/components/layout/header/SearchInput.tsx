@@ -13,8 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { ChevronDown, Search } from "lucide-react";
-import { useForm, useWatch } from "react-hook-form";
-import useGamesByName from "@/hooks/useGamesByName";
+import { useForm } from "react-hook-form";
 import z from "zod";
 import React from "react";
 import { useRouter } from "next/navigation";
@@ -50,11 +49,6 @@ const SearchInput = () => {
       search: "",
     },
   });
-
-  const platform = useWatch({
-    control: form.control,
-    name: "platform",
-  })
 
   const onSubmit = (data: SearchType) => {
     router.push(`/games?q=${data.search}&platform=${data.platform.id}`)

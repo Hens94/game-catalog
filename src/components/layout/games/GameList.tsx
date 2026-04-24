@@ -1,5 +1,6 @@
 'use client'
 
+import Loading from "@/components/ui/Loading";
 import useGamesByName from "@/hooks/useGamesByName";
 import { useSearchParams } from "next/navigation";
 
@@ -16,6 +17,9 @@ const GameList = () => {
     const { gamesByName, isLoading } = useGamesByName(search ?? "", platformNumber);
 
     return (
+        isLoading ? <Loading></Loading> :
+        gamesByName?.results?.length === 0 ? <div className="text-center text-2xl font-bold">No games found</div> :
+
         <>
         <h1>Busqueda: {search}</h1>
         <p>Platform: {platformNumber}</p>
@@ -25,4 +29,4 @@ const GameList = () => {
     );
 }
 
-export default GameList;
+export default GameList;    
