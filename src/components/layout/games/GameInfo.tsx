@@ -10,8 +10,8 @@ import Loading from "@/components/ui/Loading"
 import useGameByID from "@/hooks/useGamesByID"
 import useScreenshots from '@/hooks/useScreenshots'
 import Image from 'next/image'
-import Link from "next/link"
 import { Dialog } from "radix-ui";
+import { useRouter } from "next/navigation";
 
 
 type PropType = {
@@ -23,6 +23,11 @@ const platformArray: string[] = ['PlayStation 4','PlayStation 5','Xbox One','Xbo
 const GameInfo = ({id} : PropType) => {
     const { gameByID, isLoading } = useGameByID(id);
     const { screenshots } = useScreenshots(id);
+    const router = useRouter();
+
+    const onClick = (platformID: number) => {
+        router.push(`/games?q=""&platform=${platformID}`)
+    };
 
     return (
         isLoading ? <Loading></Loading> :
@@ -46,7 +51,7 @@ const GameInfo = ({id} : PropType) => {
                     <h1 className="text-3xl text-center md:text-start md:text-8xl">{gameByID?.name}</h1>
                     <div className="flex flex-wrap gap-x-4 gap-y-6">
                         {gameByID?.platforms.map((p,index) => (
-                            platformArray.includes(p.platform.name) && <Link key={index} href="/"><span  className="text-sm md:text-md border-1 border-foreground rounded-md w-fit p-2 hover:text-accent hover:border-accent transition duration-300">{p.platform.name}</span></Link>
+                            platformArray.includes(p.platform.name) && <button key={index} onClick={() => onClick(p.platform.id)} className="text-sm md:text-md border-1 border-foreground rounded-md w-fit p-2 hover:text-accent hover:border-accent hover:cursor-pointer transition duration-300">{p.platform.name}</button>
                         ))}
                     </div>
                     <p className="hidden md:block my-10 text-md ">{gameByID?.description_raw}</p>

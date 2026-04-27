@@ -1,6 +1,6 @@
 import { Gamepad2 } from "lucide-react";
 import Link from "next/link";
-import CategoryToggle from "./CategoryToggle";
+import PlatformToggle from "./PlatformToggle";
 import { ReactNode } from "react";
 import SubHeaderMobile from "./SubHeaderMobile";
 
@@ -21,8 +21,8 @@ export const headerMenuItem: MenuItemType[] = [
     path: "/",
   },
   {
-    label: "Categorias",
-    path: "/games",
+    label: "Plataformas",
+    path: "/platforms",
   },
   {
     label: "Acerca de",
@@ -34,7 +34,7 @@ const SubHeader = () => {
   return (
     <header className="sticky top-0 grid grid-cols-1 z-1 bg-sidebar">
       <div className="w-full py-1 flex-col md:flex-row gap-4 items-center px-8 hidden md:flex mt-2 mb-3">
-        <CategoryToggle />
+        <PlatformToggle />
         <section className="flex flex-col md:flex-row gap-4 md:gap-10 items-center">
           {headerMenuItem.map((item) => (
             <Link
