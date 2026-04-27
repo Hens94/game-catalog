@@ -3,6 +3,7 @@
 import Loading from "@/components/ui/Loading";
 import useGamesByName from "@/hooks/useGamesByName";
 import { useSearchParams } from "next/navigation";
+import ProductGrid from "../home/ProductGrid";
 
 const GameList = () => {
     const searchParams = useSearchParams();
@@ -20,12 +21,13 @@ const GameList = () => {
         isLoading ? <Loading></Loading> :
         gamesByName?.results?.length === 0 ? <div className="text-center text-2xl font-bold">No games found</div> :
 
-        <>
-        <h1>Busqueda: {search}</h1>
-        <p>Platform: {platformNumber}</p>
-
-        <code>{JSON.stringify(gamesByName, null, 2)}</code>
-        </>
+        <div className="grid grid-cols-1">
+            <h2 className="px-10 py-2 text-3xl font-bold">Resultados de busqueda para: -{search}-</h2>
+            <ProductGrid 
+            games={gamesByName}
+            isLoading={isLoading}
+            />
+        </div>
     );
 }
 
