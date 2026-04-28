@@ -1,18 +1,18 @@
 import { API_ENDPOINTS } from "@/common/apiConstants";
-import { PlatformsList } from "@/common/types/game";
+import { GridList } from "@/common/types/game";
 import { axiosClient } from "@/libs/axiosClient";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const usePlatforms = () => {
-  const [platforms, setPlatforms] = useState<PlatformsList | null>(null);
+  const [platforms, setPlatforms] = useState<GridList | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
 
   const getPlatforms = async () => {
     try {
       setIsLoading(true);
-      const response = await axiosClient.get<PlatformsList>(API_ENDPOINTS.GET_PLATFORMS);
+      const response = await axiosClient.get<GridList>(API_ENDPOINTS.GET_PLATFORMS);
 
       if (response.status !== 200) {
         toast.error("Failed to fetch games");

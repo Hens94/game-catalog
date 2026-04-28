@@ -8,11 +8,10 @@ const PlatformList = () => {
     const { platforms, isLoading } = usePlatforms();
 
     return (
-        // <ProductGrid 
-        // games={platforms}
-        // isLoading={isLoading}
-        // />
-        <div>PlatformsPage</div>
+        <ProductGrid 
+            items={platforms}
+            isLoading={isLoading}
+        />
     )
 }
 

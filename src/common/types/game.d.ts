@@ -168,9 +168,11 @@ export interface GridList {
 export interface GridItem {
   id: number;
   name: string;
+  slug: string;
   background_image: string;
   rating: number;
   platforms: Platform2[];
   games_count: number;
   image_background: string; //platform image background
+  short_screenshots: Shortscreenshot[];
 }

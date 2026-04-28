@@ -123,7 +123,7 @@ const ProductCarousel: React.FC<PropType> = (props) => {
       <div className="items-center">
         <h2 className="m-3 md:m-10 text-3xl font-bold">Lanzamientos destacados</h2>
         <ProductGrid 
-          games={games}
+          items={games}
           isLoading={isLoading}
         />
       </div>
