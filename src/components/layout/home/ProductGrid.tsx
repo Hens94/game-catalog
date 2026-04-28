@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Star } from 'lucide-react';
 
 type PropType = {
-  games: GameList | null,
+  games?: GameList | null,
   isLoading: boolean
 }
 

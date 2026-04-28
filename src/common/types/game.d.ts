@@ -126,8 +126,6 @@ export interface Platform {
   id: number;
   name: string;
   slug: string;
-  image?: any;
-  year_end?: any;
   year_start?: (null | number)[];
   games_count: number;
   image_background: string;
@@ -137,4 +135,42 @@ export interface Platform {
 export interface Requirements {
   minimum: string;
   recommended: string;
+}
+
+export interface PlatformsList {
+  count: number;
+  next: string;
+  results: PlatformsResult[];
+}
+
+export interface PlatformsResult {
+  id: number
+  name: string
+  slug: string
+  games_count: number
+  image_background: string
+  games: GamesFromPlatform[]
+}
+
+export interface GamesFromPlatform {
+  id: number
+  slug: string
+  name: string
+  added: number
+}
+
+export interface GridList {
+  count: number
+  next: string
+  results: GridItem[]
+}
+
+export interface GridItem {
+  id: number;
+  name: string;
+  background_image: string;
+  rating: number;
+  platforms: Platform2[];
+  games_count: number;
+  image_background: string; //platform image background
 }
