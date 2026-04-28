@@ -3,7 +3,7 @@
 import Loading from "@/components/ui/Loading";
 import useGamesByName from "@/hooks/useGamesByName";
 import { useSearchParams } from "next/navigation";
-import ProductGrid from "../home/ProductGrid";
+import GameGrid from "../home/GameGrid";
 
 const GameList = () => {
     const searchParams = useSearchParams();
@@ -23,9 +23,9 @@ const GameList = () => {
 
         <div className="grid grid-cols-1">
             <h2 className="px-10 py-2 text-3xl font-bold">Resultados de busqueda para: -{search}-</h2>
-            <ProductGrid 
-            items={gamesByName}
-            isLoading={isLoading}
+            <GameGrid 
+                items={gamesByName}
+                isLoading={isLoading}
             />
         </div>
     );

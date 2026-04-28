@@ -17,7 +17,7 @@ import Image from 'next/image'
 import { Play, Pause } from 'lucide-react'
 import Link from 'next/link'
 import Loading from "@/components/ui/Loading";
-import ProductGrid from './ProductGrid'
+import GameGrid from './GameGrid'
 import useGames from '@/hooks/useGames'
 
 
@@ -122,7 +122,7 @@ const ProductCarousel: React.FC<PropType> = (props) => {
       </div>
       <div className="items-center">
         <h2 className="m-3 md:m-10 text-3xl font-bold">Lanzamientos destacados</h2>
-        <ProductGrid 
+        <GameGrid 
           items={games}
           isLoading={isLoading}
         />
