@@ -24,7 +24,7 @@ const GameList = () => {
         <div className="grid grid-cols-1">
             <h2 className="px-10 py-2 text-3xl font-bold">Resultados de busqueda para: -{search}-</h2>
             <GameGrid 
-                items={gamesByName}
+                games={gamesByName}
                 isLoading={isLoading}
             />
         </div>
