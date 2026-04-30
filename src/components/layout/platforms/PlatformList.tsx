@@ -5,8 +5,9 @@ import MediaCard from "@/components/ui/MediaCard";
 import Loading from "@/components/ui/Loading";
 import { GridItem } from "@/common/types/game";
 
-
 const platformArray: string[] = ['playstation4','playstation5','xbox-one','xbox-series-x','nintendo-switch']
+
+
 
 const PlatformList = () => { 
     const { platforms, isLoading } = usePlatforms();
@@ -22,14 +23,19 @@ const PlatformList = () => {
   }
 
     return (
-        <div className="m-3 md:m-10 columns-1 gap-8 md:columns-3 xl:columns-4">
-            {filteredData?.map((data,index) => (
-                <MediaCard 
-                    key={index}
-                    variant="platform"
-                    data={data}
-                />
-            ))}    
+        <div className="grid grid-cols-1 w-screen ">
+            <h2 className="px-10 py-2 text-3xl font-bold">Juegos por Plataformas disponibles</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 m-4">
+                {filteredData?.map((data,index) => (
+                    <MediaCard 
+                        className=""
+                        key={index}
+                        variant="platform"
+                        data={data}
+
+                    />
+                ))}    
+            </div>
         </div>
     )
 }

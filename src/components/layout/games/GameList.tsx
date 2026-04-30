@@ -22,7 +22,7 @@ const GameList = () => {
         gamesByName?.results?.length === 0 ? <div className="text-center text-2xl font-bold">No games found</div> :
 
         <div className="grid grid-cols-1">
-            <h2 className="px-10 py-2 text-3xl font-bold">Resultados de busqueda para: -{search}-</h2>
+            <h2 className="px-10 py-2 text-3xl font-bold">Resultados de busqueda para: -{search ?? "todos"}-</h2>
             <GameGrid 
                 games={gamesByName}
                 isLoading={isLoading}
