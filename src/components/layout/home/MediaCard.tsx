@@ -10,7 +10,6 @@ import { Star } from 'lucide-react';
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/twUtils";
 
-
 const platformArray: string[] = ['playstation4','playstation5','xbox-one','xbox-series-x','nintendo-switch']
 
 const cardVariants = cva("group relative mx-auto pt-0 overflow-hidden transition duration-300 md:hover:scale-105 md:hover:border-1",{
@@ -34,7 +33,7 @@ const MediaCard: FC<CardProps> = ({ className, data, variant,...props }) => {
 
     return (
 
-        <Link href={gameFlag ? `/games/${data.id}` : `/platforms/${data.id}`} className="h-fit p-1" {...props}>
+        <Link href={gameFlag ? `/games/${data.id}` : `/games?q=""&platform=${data.id}`} className="h-fit p-1" {...props}>
             <Card className={cn(cardVariants({variant}),className)}> 
                 {gameFlag && <div className="absolute inset-0 " />}
                 <Image 
