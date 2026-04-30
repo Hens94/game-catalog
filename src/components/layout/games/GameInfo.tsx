@@ -51,7 +51,7 @@ const GameInfo = ({id} : PropType) => {
                     <h1 className="text-3xl text-center md:text-start md:text-8xl">{gameByID?.name}</h1>
                     <div className="flex flex-wrap gap-x-4 gap-y-6">
                         {gameByID?.platforms.map((p,index) => (
-                            platformArray.includes(p.platform.name) && <button key={index} onClick={() => onClick(p.platform.id)} className="text-sm md:text-md border-1 border-foreground rounded-md w-fit p-2 hover:text-accent hover:border-accent hover:cursor-pointer transition duration-300">{p.platform.name}</button>
+                            platformArray.includes(p.platform.name) && <Button variant={"default"} key={index} onClick={() => onClick(p.platform.id)} className="text-sm md:text-md hover:text-accent-foreground hover:bg-accent transition duration-300">{p.platform.name}</Button>
                         ))}
                     </div>
                     <p className="hidden md:block my-10 text-md ">{gameByID?.description_raw}</p>
@@ -65,7 +65,7 @@ const GameInfo = ({id} : PropType) => {
                     <div className="flex flex-wrap gap-4">
                         {gameByID?.stores.map((store,index) => (
                             <a key={index} href={`https://${store.store.domain}`} target="_blank" rel="noopener noreferrer" >
-                                <Button variant={"default"} className="hover:bg-accent hover:text-accent-foreground transition duration-300">{store.store.name}</Button>
+                                <Button variant={"default"} className="text-sm md:text-md hover:bg-accent hover:text-accent-foreground transition duration-300">{store.store.name}</Button>
                             </a>
                             
                         ))}

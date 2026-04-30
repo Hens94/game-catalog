@@ -2,7 +2,7 @@
 
 import Loading from "@/components/ui/Loading";
 import { GridList } from "@/common/types/game";
-import MediaCard from "@/components/ui/MediaCard";
+import MediaCard from "@/components/layout/home/MediaCard";
 
 type PropType = {
   games?: GridList | null

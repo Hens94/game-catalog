@@ -1,7 +1,7 @@
 "use client";
 
 import usePlatforms from "@/hooks/usePlatforms";
-import MediaCard from "@/components/ui/MediaCard";
+import MediaCard from "@/components/layout/home/MediaCard";
 import Loading from "@/components/ui/Loading";
 import { GridItem } from "@/common/types/game";
 
