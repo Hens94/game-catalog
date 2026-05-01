@@ -41,7 +41,7 @@ const searchSchema = z.object({
 type SearchType = z.infer<typeof searchSchema>;
 
 const SearchInput = () => {
-  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [width, setWidth] = useState<number | undefined>(undefined);
   const router = useRouter();
   const form = useForm<SearchType>({
     resolver: zodResolver(searchSchema),
@@ -52,15 +52,16 @@ const SearchInput = () => {
   });
 
   useEffect(() => {
+      setWidth(window.innerWidth);
       const handleResize = () => setWidth(window.innerWidth);
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-  const mobileFlag = width < 768;
+  const mobileFlag = width !== undefined && width < 768;
 
   const onSubmit = (data: SearchType) => {
-    router.push(data.platform.id === 0? `/games?q=${data.search}` :`/games?q=${data.search}&platform=${data.platform.id}`)
+    router.push(data.platform.id === 0? `/games?q=${data.search}` :`/games?q=${data.search}&platform=${data.platform.id}`);
   };
 
   return (

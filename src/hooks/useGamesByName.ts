@@ -41,7 +41,7 @@ const useGamesByName = (gameName: string, platform: number, pageSize?: number) =
 
   useEffect(() => {
     getGamesByName();
-  }, [gameName]);
+  }, [gameName, platform]);
 
   return { gamesByName, isLoading };
 };
