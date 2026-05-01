@@ -4,7 +4,7 @@ import { axiosClient } from "@/libs/axiosClient";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-const useGamesByName = (gameName: string, platform: number, pageSize?: number) => {
+const useGamesByName = (gameName: string, platform: number) => {
   const [gamesByName, setGamesByName] = useState<GridList | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -12,7 +12,7 @@ const useGamesByName = (gameName: string, platform: number, pageSize?: number) =
   const searchParams = {
     search: gameName,
     platforms: platform === 0 ? "18,187,1,186,7" : platform,
-    page_size: pageSize === undefined ? 20 : pageSize,
+    page_size: 20,
     search_precise: false
   }
 

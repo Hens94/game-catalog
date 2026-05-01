@@ -35,7 +35,7 @@ const SubHeaderMobile: FC<SubHeaderMobileProps> = ({ menuItems }) => {
       <AccordionItem value="item-1" className="w-full">
         <AccordionTriggerWithoutChevron asChild>
           <button
-            className="w-full h-12 text-md font-bold text-wrap rounded-md flex items-center p-2 justify-center gap-2 text-foreground"
+            className="w-full text-md font-bold text-wrap rounded-md flex items-center justify-center gap-2 text-foreground"
           >
             <LayoutGrid className="stroke-foregroundy size-6" />
             Menu
