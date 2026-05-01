@@ -4,24 +4,16 @@ export interface GameInfo {
   name: string;
   background_image: string;
   background_image_additional: string;
-  suggestions_count: number;
-  alternative_names: any[];
-  parents_count: number;
-  additions_count: number;
-  game_series_count: number;
   platforms: Platform2[];
   stores: Store[]; 
   developers: Developer[];
   genres: Genre[];
-  tags: Tag[];
   publishers: Publisher[];
   description_raw: string;
 }
 
 export interface ScreenshotInfo {
   count: number
-  next: any
-  previous: any
   results: ScreenshotResult[]
 }
 

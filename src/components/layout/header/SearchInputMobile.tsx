@@ -12,20 +12,18 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
-import { ChevronDown, Search, SquareMenu } from "lucide-react";
-import { useForm, useWatch } from "react-hook-form";
-import useGamesByName from "@/hooks/useGamesByName";
+import { ChevronDown } from "lucide-react";
+import { useForm } from "react-hook-form";
 import z from "zod";
-import React, { useState } from "react";
-import { cn } from "@/utils/twUtils";
+import { useRouter } from "next/navigation";
 
 const platformsObject = [
-  {id: 0, value: "todos", label: "Todos"},
-  {id: 18, value: 'ps4', label: 'Playstation 4'},
-  {id: 187, value: 'ps5', label: 'Playstation 5'},
-  {id: 1, value: 'xbox-one', label: 'Xbox One'},
-  {id: 186, value: 'xbox-series-sx', label: 'Xbox Series S/X'},
-  {id: 7, value: 'nintendo-switch', label: 'Nintendo Switch'},
+  {id: 0, slug: "todos", label: "Todos"},
+  {id: 18, slug: 'ps4', label: 'Playstation 4'},
+  {id: 187, slug: 'ps5', label: 'Playstation 5'},
+  {id: 1, slug: 'xbox-one', label: 'Xbox One'},
+  {id: 186, slug: 'xbox-series-sx', label: 'Xbox Series S/X'},
+  {id: 7, slug: 'nintendo-switch', label: 'Nintendo Switch'},
 ] as const
 
 
@@ -34,7 +32,7 @@ const searchSchema = z.object({
   search: z.string().min(1, { message: "El campo es requerido" }),
   platform: z.object({
     id: z.number(),
-    value: z.string(),
+    slug: z.string(),
     label: z.string(),
   }),
 });
@@ -42,11 +40,7 @@ const searchSchema = z.object({
 type SearchType = z.infer<typeof searchSchema>;
 
 const SearchInputMobile = () => {
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [selectedPlatform, setSelectedPlatform] = React.useState<number>(0);
-  const [isToggle, setIsToggle] = useState<boolean>(false);
-  const { gamesByName, isLoading } = useGamesByName(searchTerm, selectedPlatform);
-
+  const router = useRouter();
   const form = useForm<SearchType>({
     resolver: zodResolver(searchSchema),
     defaultValues: {
@@ -55,16 +49,9 @@ const SearchInputMobile = () => {
     },
   });
 
-  const platform = useWatch({
-    control: form.control,
-    name: "platform",
-  })
-
-  console.log(selectedPlatform);
 
   const onSubmit = (data: SearchType) => {
-    setSearchTerm(data.search);
-    setSelectedPlatform(data.platform.id);
+    router.push(data.platform.id === 0? `/games?q=${data.search}` :`/games?q=${data.search}&platform=${data.platform.id}`)
   };
 
   return (

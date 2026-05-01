@@ -15,16 +15,16 @@ import {
 import { ChevronDown, Search } from "lucide-react";
 import { useForm } from "react-hook-form";
 import z from "zod";
-import React from "react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const platformsObject = [
-  {id: 0, value: "todos", label: "Todos"},
-  {id: 18, value: 'ps4', label: 'Playstation 4'},
-  {id: 187, value: 'ps5', label: 'Playstation 5'},
-  {id: 1, value: 'xbox-one', label: 'Xbox One'},
-  {id: 186, value: 'xbox-series-sx', label: 'Xbox Series S/X'},
-  {id: 7, value: 'nintendo-switch', label: 'Nintendo Switch'},
+  {id: 0, slug: "todos", label: "Todos"},
+  {id: 18, slug: 'ps4', label: 'Playstation 4'},
+  {id: 187, slug: 'ps5', label: 'Playstation 5'},
+  {id: 1, slug: 'xbox-one', label: 'Xbox One'},
+  {id: 186, slug: 'xbox-series-sx', label: 'Xbox Series S/X'},
+  {id: 7, slug: 'nintendo-switch', label: 'Nintendo Switch'},
 ] as const
 
 
@@ -33,7 +33,7 @@ const searchSchema = z.object({
   search: z.string().min(1, { message: "El campo es requerido" }),
   platform: z.object({
     id: z.number(),
-    value: z.string(),
+    slug: z.string(),
     label: z.string(),
   }),
 });
@@ -41,6 +41,7 @@ const searchSchema = z.object({
 type SearchType = z.infer<typeof searchSchema>;
 
 const SearchInput = () => {
+  const [width, setWidth] = useState<number>(window.innerWidth);
   const router = useRouter();
   const form = useForm<SearchType>({
     resolver: zodResolver(searchSchema),
@@ -50,15 +51,23 @@ const SearchInput = () => {
     },
   });
 
+  useEffect(() => {
+      const handleResize = () => setWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+  const mobileFlag = width < 768;
+
   const onSubmit = (data: SearchType) => {
-    router.push(`/games?q=${data.search}&platform=${data.platform.id}`)
+    router.push(data.platform.id === 0? `/games?q=${data.search}` :`/games?q=${data.search}&platform=${data.platform.id}`)
   };
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="hidden md:flex items-center w-full border-2 rounded-xl h-14 text-foreground bg-input "
+        className="flex items-center w-full border-2 rounded-xl h-14 text-foreground bg-input "
       >
         <FormField
           control={form.control}
@@ -67,16 +76,16 @@ const SearchInput = () => {
             <FormItem className="flex items-center h-full px-4">
               <FormControl>
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center justify-between outline-0 w-full text-sm font-bold m-1 min-w-[120px] hover:cursor-pointer">
-                    <span className="flex-1 text-left">
+                  <DropdownMenuTrigger className={mobileFlag ? "" : "flex items-center justify-between outline-0 w-full text-sm font-bold m-1 min-w-[120px] hover:cursor-pointer"}>
+                    { !mobileFlag && <span className="flex-1 text-left">
                       {field.value.label}
-                    </span>
+                    </span>}
                     <ChevronDown className="stroke-foreground" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="h-10 w-50 ">
                     <div className="border-2 border-border rounded-md bg-popover overflow-x-hidden">
-                      <DropdownMenuLabel className="font-bold text-foreground">
-                        Categorias
+                      <DropdownMenuLabel className="font-bold text-primary md:text-foreground">
+                        {!mobileFlag ? "Categorias" : field.value.label}
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
                       {platformsObject.map((platform) => (
@@ -108,7 +117,7 @@ const SearchInput = () => {
                     className="w-full h-full outline-none px-4 text-sm text-foreground"
                     {...field}
                   />
-                  <Search className="flex justify-end mr-6 stroke-foreground" />
+                  {!mobileFlag && <Search className="flex justify-end mr-6 stroke-foreground" />}
                 </div>
               </FormControl>
             </FormItem>

@@ -16,12 +16,11 @@ const platformsObject = [
 
 const PlatformToggle = () => {
   const [isToggle, setIsToggle] = useState<boolean>(false);
-  const [platform, setPlatform] = useState<number>(0);
   const router = useRouter();
 
   const onClick = (platformID: number) => {
-    setPlatform(platformID);
-    router.push(`/games?q=""&platform=${platform}`)
+    router.push(platformID === 0 ? `/games` : `/games?q=""&platform=${platformID}`);
+    setIsToggle(!isToggle);
   };
 
   return (

@@ -19,7 +19,7 @@ const GameList = () => {
     const searchParams = useSearchParams();
     const search = searchParams.get("q");
     const platform = searchParams.get("platform")
-    const [ platformName ] = useState<string>(platformsObject.find((p) => p.id === platform)?.label || "");
+    const [ platformName ] = useState<string>(platformsObject.find((p) => p.id === platform)?.label || "todas las plataformas");
 
     let platformNumber = Number(platform);
     if (Number.isNaN(platformNumber)) {
@@ -34,7 +34,7 @@ const GameList = () => {
         gamesByName?.results?.length === 0 ? <div className="text-center text-2xl font-bold">No games found</div> :
 
         <div className="w-full max-w-screen grid grid-cols-1">
-            <h2 className="px-10 py-2 text-3xl font-bold">Resultados de busqueda{search === "" ? ` para -${search}-:` : ` para -${platformName}-:`}</h2>
+            {platformName !== "todas las plataformas" ? <h2 className="px-10 py-2 text-3xl font-bold">Resultados de busqueda de -{search}- para -{platformName}-:</h2> : <h2 className="px-10 py-2 text-3xl font-bold">Resultados de busqueda para -{platformName}-</h2>}
             <GameGrid 
                 games={gamesByName}
                 isLoading={isLoading}
