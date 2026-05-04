@@ -42,7 +42,7 @@ const GameInfo = ({id} : PropType) => {
                     unoptimized= {true}
                     src={gameByID?.background_image ||  `/${gameByID.name}.png`}    
                     alt={gameByID?.slug}
-                    className="w-full object-cover h-full max-h-screen brightness-50 md:brightness-20 mask-y-from-90% to-90%"
+                    className="w-full object-cover h-full max-h-180 brightness-50 md:brightness-20 mask-y-from-90% to-90%"
                 />
             </div>
 
