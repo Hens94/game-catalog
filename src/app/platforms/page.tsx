@@ -1,4 +1,4 @@
-import PlatformList from "@/components/layout/platforms/PlatformList";
+import PlatformList from "@/components/layout/platforms/PlatformGrid";
 import Loading from "@/components/ui/Loading";
 import { Suspense } from "react";
 

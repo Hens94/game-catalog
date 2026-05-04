@@ -9,7 +9,7 @@ const platformArray: string[] = ['playstation4','playstation5','xbox-one','xbox-
 
 
 
-const PlatformList = () => { 
+const PlatformGrid = () => { 
     const { platforms, isLoading } = usePlatforms();
 
     const filteredData: GridItem[] | undefined = platforms?.results?.filter((platform) => platformArray.includes(platform.slug));
@@ -23,7 +23,7 @@ const PlatformList = () => {
   }
 
     return (
-        <div className="grid grid-cols-1 w-screen ">
+        <div className="animate-fade-in-up delay-200 grid grid-cols-1 w-screen ">
             <h2 className="px-10 py-2 text-3xl font-bold">Juegos por Plataformas disponibles</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 m-4">
                 {filteredData?.map((data,index) => (
@@ -40,4 +40,4 @@ const PlatformList = () => {
     )
 }
 
-export default PlatformList;
+export default PlatformGrid;

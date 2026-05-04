@@ -21,7 +21,7 @@ const GameGrid: React.FC<PropType> = (props) => {
   }
 
   return (
-    <div className="m-3 md:m-10 columns-1 gap-8 md:columns-3 xl:columns-4">
+    <div className="animate-fade-in-up delay-200 m-3 md:m-10 columns-1 gap-8 md:columns-3 xl:columns-4">
       {games?.results?.map((game, index) => (
         <MediaCard 
           key={index}
