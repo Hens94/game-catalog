@@ -4,31 +4,22 @@ import { axiosClient } from "@/libs/axiosClient";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-const useGamesByName = (gameName: string, platform: number) => {
-  const [gamesByName, setGamesByName] = useState<GridList | null>(null);
+const usePlatforms = () => {
+  const [platforms, setPlatforms] = useState<GridList | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
 
-  const searchParams = {
-    search: gameName,
-    platforms: platform === 0 ? "18,187,1,186,7" : platform,
-    page_size: 20,
-    search_precise: false
-  }
-
-
-
-  const getGamesByName = async () => {
+  const getPlatforms = async () => {
     try {
       setIsLoading(true);
-      const response = await axiosClient.get<GridList>(API_ENDPOINTS.GET_GAMES, {params: searchParams});
+      const response = await axiosClient.get<GridList>(API_ENDPOINTS.GET_PLATFORMS);
 
       if (response.status !== 200) {
         toast.error("Failed to fetch games");
         return;
       }
 
-      setGamesByName(response.data);
+      setPlatforms(response.data);
       console.log(response.data)
     } catch (error) {
       toast.error("Failed to fetch games", {
@@ -40,10 +31,10 @@ const useGamesByName = (gameName: string, platform: number) => {
   };
 
   useEffect(() => {
-    getGamesByName();
-  }, [gameName, platform]);
+    getPlatforms();
+  }, []);
 
-  return { gamesByName, isLoading };
+  return { platforms, isLoading };
 };
 
-export default useGamesByName;
+export default usePlatforms;

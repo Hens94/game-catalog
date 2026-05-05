@@ -2,12 +2,26 @@
 
 import { cn } from "@/utils/twUtils";
 import { ChevronDown, LayoutGrid } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const categories = ["Playstation 4", "Playstation 5", "Xbox One", "Xbox Series S/X", "Nintendo Switch", "PC"];
+const platformsObject = [
+  {id: 0, value: "todos", label: "Todos"},
+  {id: 18, value: 'ps4', label: 'Playstation 4'},
+  {id: 187, value: 'ps5', label: 'Playstation 5'},
+  {id: 1, value: 'xbox-one', label: 'Xbox One'},
+  {id: 186, value: 'xbox-series-sx', label: 'Xbox Series S/X'},
+  {id: 7, value: 'nintendo-switch', label: 'Nintendo Switch'},
+] as const
 
-const CategoryToggle = () => {
+const PlatformToggle = () => {
   const [isToggle, setIsToggle] = useState<boolean>(false);
+  const router = useRouter();
+
+const onClick = (platformID: number) => {
+    router.push(platformID === 0 ? `/games` : `/games?q=""&platform=${platformID}`);
+    setIsToggle(!isToggle);
+  };
 
   return (
     <>
@@ -29,9 +43,9 @@ const CategoryToggle = () => {
         "animate-fade-out transition-all transition-discrete" : !isToggle
       })}>
         <div className="grid grid-cols-2 gap-4 m-8 font-bold">
-          {categories.map((category,index) => (
-            <button key={index} className="text-foreground border-1 border-border rounded-sm p-2 hover:border-accent hover:text-accent transition duration-300 hover:cursor-pointer">
-              {category}
+          {platformsObject.map((platform,index) => (
+            <button key={index} onClick={() => onClick(platform.id)} className="text-foreground border-1 border-border rounded-sm p-2 hover:border-accent hover:text-accent transition duration-300 hover:cursor-pointer">
+              {platform.label}
             </button>
           ))}
         </div>
@@ -40,4 +54,4 @@ const CategoryToggle = () => {
   );
 };
 
-export default CategoryToggle;
+export default PlatformToggle;

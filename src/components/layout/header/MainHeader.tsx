@@ -2,7 +2,6 @@ import Image from "next/image";
 import logo from "@/assets/images/logo.webp";
 import Link from "next/link";
 import SearchInput from "./SearchInput";
-import SearchInputMobile from "./SearchInputMobile";
 
 const MainHeader = () => {
   return (
@@ -18,7 +17,6 @@ const MainHeader = () => {
           />
         </Link>
         <SearchInput />
-        <SearchInputMobile />
       </div>
     </header>
   );
