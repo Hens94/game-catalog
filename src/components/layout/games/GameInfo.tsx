@@ -38,8 +38,9 @@ const GameInfo = ({id} : PropType) => {
                 <Image 
                     width={500}
                     height={500}
-                    quality={100}
+                    quality={75}
                     unoptimized= {true}
+                    loading="eager"
                     src={gameByID?.background_image ||  `/${gameByID.name}.png`}    
                     alt={gameByID?.slug}
                     className="w-full object-cover h-full max-h-180 brightness-50 md:brightness-20 mask-y-from-90% to-90%"
@@ -86,7 +87,7 @@ const GameInfo = ({id} : PropType) => {
                                 <Image
                                     width={500}
                                     height={500}
-                                    quality={100}
+                                    quality={75}
                                     unoptimized= {true}
                                     src={screenshot.image}
                                     alt={gameByID?.slug}
@@ -98,10 +99,11 @@ const GameInfo = ({id} : PropType) => {
                                 <Dialog.Overlay className="fixed inset-0 bg-black/80 z-2" />
                                 <Dialog.Content className="fixed left-1/2 top-1/2 max-h-[90vh] w-full md:w-[90vw] max-w-screen md:max-w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-md p-[25px] shadow-[var(--shadow-6)] focus:outline-none z-50">
                                     <Dialog.Title className="hidden">{gameByID?.name}</Dialog.Title>
+                                    <Dialog.Description />
                                     <Image
                                         width={120}
                                         height={800}
-                                        quality={100}
+                                        quality={75}
                                         unoptimized= {true}
                                         src={screenshot.image}
                                         alt={gameByID?.slug}

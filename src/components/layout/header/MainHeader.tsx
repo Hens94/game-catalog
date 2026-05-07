@@ -14,6 +14,7 @@ const MainHeader = () => {
             alt="logo"
             width={120}
             height={54}
+            loading="eager"
           />
         </Link>
         <SearchInput />

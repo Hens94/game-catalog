@@ -75,7 +75,7 @@ const ProductCarousel: React.FC<PropType> = (props) => {
                   <Image 
                     width={500}
                     height={500}
-                    quality={100}
+                    quality={75}
                     unoptimized= {true}
                     src={item.short_screenshots[1].image}
                     alt={item.slug}
