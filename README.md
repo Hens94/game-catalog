@@ -1,43 +1,93 @@
-# Catálogo de Juegos
+# Game Catalog
 
-Este proyecto es una aplicación web construida con [Next.js](https://nextjs.org) que permite mostrar un catálogo de juegos. Puedes explorar, buscar y visualizar información sobre diferentes juegos de manera sencilla y rápida.
+> A web application to explore, search, and view detailed information about modern video games, powered by the RAWG API.
 
-## ¿Cómo levantar la aplicación?
+<img width="1567" height="774" alt="image" src="https://github.com/user-attachments/assets/b12a6385-00c6-4109-9a31-baab58992808" />
 
-Antes de iniciar el servidor de desarrollo, instala las dependencias ejecutando:
+## Live Demo
 
+**[https://game-catalog-seven.vercel.app/](https://game-catalog-seven.vercel.app/)**
+
+## Description
+
+**Game Catalog** is a web application that lets users explore a curated catalog of current video games for the most popular platforms: PlayStation 4/5, Xbox One/Series S/X, and Nintendo Switch.
+
+Built with **Next.js 16** and **React 19**, the app consumes real-time data from the [RAWG Video Games Database API](https://rawg.io/) to deliver a smooth game discovery experience.
+
+### Features
+
+- **Featured carousel**: Full-screen carousel with fade transitions, autoplay, navigation controls, and dot indicators
+- **Advanced search**: Search games by name with platform filtering
+- **Platform filtering**: Browse games by PlayStation, Xbox, or Nintendo Switch
+- **Responsive grid**: Masonry-style layout that adapts from 1 to 4 columns based on screen size
+- **Game details**: Complete information: description, genres, ratings, store links, and screenshot gallery
+- **Dark theme**: Dark-mode-first design with a cyberpunk-inspired color palette (magenta/cyan)
+- **Toast notifications**: Visual feedback on API errors
+- **Responsive design**: Mobile-first with adaptive layouts
+  
+### Tech Stack
+
+| Category | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| UI | React 19 + TypeScript |
+| Styling | Tailwind CSS v4 + shadcn/ui |
+| Icons | Lucide React |
+| Carousel | Embla Carousel |
+| Forms | React Hook Form + Zod |
+| Animations | @midudev/tailwind-animations |
+| Font | Quicksand (Google Fonts) |
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- A [RAWG API key](https://rawg.io/apidocs) (free)
+  
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Hens94/game-catalog.git
+cd game-catalog
+```
+
+2. Install dependencies:
+   
 ```bash
 npm install
 ```
 
-Luego, para iniciar el servidor de desarrollo, ejecuta el siguiente comando:
+3. Create a `.env.local` file and add your API credentials:
+   
+```env
+NEXT_PUBLIC_API_BASE_URL=https://api.rawg.io/api
+NEXT_PUBLIC_API_KEY=your_rawg_api_key_here
+```
 
+4. Start the development server:
+   
 ```bash
 npm run dev
 ```
 
-La aplicación estará disponible en [http://localhost:3000](http://localhost:3000).
+The app will be available at [http://localhost:3000](http://localhost:3000).
+## Project Structure
 
-## Más información
-
-Tecnologías principales utilizadas en este proyecto:
-
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [shadcn/ui](https://ui.shadcn.com/)
-- [TanStack Query](https://tanstack.com/query/latest)
-
-Para aprender más sobre Next.js, revisa los siguientes recursos:
-
-- [Documentación de Next.js](https://nextjs.org/docs)
-- [Tutorial interactivo de Next.js](https://nextjs.org/learn)
-
-Puedes ver el repositorio de [Next.js en GitHub](https://github.com/vercel/next.js) para más información y contribuir.
-
-Consulta la [documentación de despliegue de Next.js](https://nextjs.org/docs/app/building-your-application/deploying) para más detalles.
-
-## Repositorio del proyecto
-
-Puedes encontrar el código fuente y más información en el siguiente enlace:
-
-- [https://github.com/Hens94/game-catalog](https://github.com/Hens94/game-catalog)
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── (home)/             # Homepage with carousel + grid
+│   ├── games/              # Search results & game detail
+│   ├── platforms/          # Platform listing & filtered games
+│   └── about/              # About page
+├── components/
+│   ├── layout/             # Header, footer, carousel, grid
+│   └── ui/                 # shadcn/ui primitives
+├── hooks/                  # Custom data-fetching hooks
+├── common/                 # Types & API constants
+├── libs/                   # Axios client with API key interceptor
+└── utils/                  # Utility functions
+```
